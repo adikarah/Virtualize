@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAA;EACP,KAAK,EAAC,IAAI;CACV",
+    "sources": [
+        "update-store.component.scss"
+    ],
+    "names": [],
+    "file": "update-store.component.css"
+}

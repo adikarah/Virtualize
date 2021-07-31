@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAA;EACP,KAAK,EAAC,IAAI;CACV",
+    "sources": [
+        "add-products.component.scss"
+    ],
+    "names": [],
+    "file": "add-products.component.css"
+}

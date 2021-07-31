@@ -1,0 +1,60 @@
+<div *ngIf="change" class="loader-container" style="margin-bottom: 20%;">
+  <mat-spinner style="top: 40%; left: 45%;"></mat-spinner>
+</div>
+
+<mat-card>
+  <div class="row">
+    <div class="col-9">
+      <h2 class="adminStoreName">ALL PRODUCTS</h2>
+    </div>
+
+    <div class="col-2">
+      <input type="text" clas="form-control" id="myInput" placeholder="Search Your Products" (keyup)="searchProducts()">
+    </div>
+  </div>
+
+
+  <mat-card class="card adminStores" style="background-color: rgb(225, 241, 241); margin-bottom: 2%;"
+    *ngFor="let u of adminStores | filter:nameSearch ">
+    <div class="row">
+      <div class="col-10">
+        <h2 class="adminStoreName">{{u.shopName}}</h2>
+      </div>
+    </div>
+
+    <mat-card class="shop-product-card" style="margin-bottom: 2% ; border-radius: 5%;"
+      *ngFor="let p of u.shopProducts ">
+
+      <div class="row">
+        <div class="col">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image">
+              <img src="{{productImageUrl}}{{p.productId}}" alt="" style="width: 80px; height: 100px;">
+            </div>
+            <mat-card-title class="shop-Products" style="margin-left: 3rem;">{{p.productName}}</mat-card-title>
+            <mat-card-subtitle style="margin-left: 3rem;">{{p.brandName}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content><strong style="color: lightcoral;" style="margin-left: 7rem;"> Rs
+              {{p.productPrice}}/-</strong></mat-card-content>
+        </div>
+        <div class="col">
+          This is Description of Product
+        </div>
+        <div class="col">
+          <mat-card-action>
+            <button (click)="onUpdateProduct(p,u)" routerLink="/admin/update-product" mat-raised-button
+              style="margin-right: 3%; margin-top: 2%; background-color: #2a4977; color: ghostwhite;">Update</button>
+            <button mat-raised-button (click)="availOffers(p,u)" routerLink="/admin/discounts"
+              style="margin-top: 2%; background-color:#2a4977 ; color: ghostwhite;">Available Offers</button>
+            <button (click)="onDeleteProduct(p,u)" mat-mini-fab color="warn"
+              aria-label="Example icon button with a delete icon" style="float: right; margin-top: 2%;">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-card-action>
+
+        </div>
+      </div>
+    </mat-card>
+  </mat-card>
+
+</mat-card>

@@ -1,0 +1,10 @@
+<div class="recommedationContainer" [ngStyle]="{'grid-template-columns': gridTemplateColumn()}">
+  <!-- style="grid-template-columns: repeat({{recommenadtionBox}},1fr);"> -->
+  <div *ngFor="let recomImg of recommedationImageIds ">
+    <img class="recommedationImage" src="{{recommedationImage}}{{recomImg.recommendId}}"
+      (click)="onTypeOfProduct(recomImg.categoryType)" [routerLink]="'/user-container/'+recomImg.categoryType">
+    <div class="recommedationDescription">
+      <p>{{recomImg.description}}</p>
+    </div>
+  </div>
+</div>

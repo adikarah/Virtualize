@@ -1,0 +1,198 @@
+<ng-container *ngIf="loaded">
+  <section>
+    <h2>
+      <a [routerLink]="['/']">
+        HOME
+      </a>
+      >
+      <a [routerLink]="'/user-container/'+ productCategory">
+        {{productCategory}}
+      </a>
+      > PRODUCT DETAILS
+    </h2>
+    <div class="productDetail">
+      <!-- product image -->
+      <div class="productImage">
+        <img src="{{productImageUrl}}{{productId}}">
+      </div>
+      <div>
+        <!-- product details -->
+        <div class="productInfo">
+          <p><strong>PRODUCT DETAILS</strong></p>
+          <div>
+            <div>
+              <div class="productName">
+                <p><strong>{{productData.brandName}}</strong></p>
+                <p><strong>{{productData.productName}}</strong></p>
+              </div>
+              <div class="productType">
+                <p>Type:</p>
+                <p>{{productData.categoryType}}</p>
+              </div>
+              <div class="productRealPrice">
+                <p>Price:</p>
+                <p>Rs. {{productData.productPrice}}</p>
+              </div>
+              <div class="productDescription">
+                <p>Description :</p>
+                <!--product Expansion Plane if part (close down arrow)-->
+                <div class="Product_toggle_arrow" *ngIf="productExpansionPlane == 0; else productExpansionPlaneElse">
+                  <img src="../../assets/images/toggle_arrow_down.png" (click)="onProductExpansionPlane()">
+                </div>
+                <!--product Expansion Plane else part (close up arrow)-->
+                <ng-template #productExpansionPlaneElse>
+                  <div class="Product_toggle_arrow">
+                    <img src="../../assets/images/toggle_arrow_up.jpg" (click)="onProductExpansionPlane()">
+                  </div>
+                </ng-template>
+              </div>
+              <div class="Description" [ngStyle]="{display: productExpansionPlane == 0 ? 'none' : 'block'}">
+                <p>{{productData.productDescription}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- product discount -->
+        <div class="productOffer" *ngIf="productData.productDiscounts.length != 0">
+          <p><strong>OFFER</strong></p>
+          <div class="productDiscount" *ngFor="let item of productData.productDiscounts; index as i">
+            <div>
+              <div class="productDiscountName">
+                <p>{{productData.productDiscounts[i].discountName}}</p>
+              </div>
+              <div class="productDiscountPercentage">
+                <p>{{productData.productDiscounts[i].discountPercentage}}%</p>
+              </div>
+              <div class="productDiscountExpireTitle">
+                <p>Expire Date: </p>
+              </div>
+              <!--if part of expire date-->
+              <div class="productDiscountExpireDays"
+                *ngIf="calculateDiffDays(productData.productDiscounts[i].endDate) == 0; else elseBlock">
+                <div>
+                  <p>Today is the last day</p>
+                </div>
+              </div>
+              <!-- else part of expire date -->
+              <ng-template #elseBlock>
+                <div class="productDiscountExpireDays"
+                  *ngIf="calculateDiffDays(productData.productDiscounts[i].endDate)==-1; else elseElseBlock">
+                  <p>not given or Expire</p>
+                </div>
+                <ng-template #elseElseBlock>
+                  <div class="productDiscountExpireDays">
+                    <p>{{calculateDiffDays(productData.productDiscounts[i].endDate)}} more days to
+                      go
+                    </p>
+
+                  </div>
+                </ng-template>
+              </ng-template>
+
+              <!--Discount Price-->
+              <div class="discountPrice">
+                <p>
+                  Discount Price :
+                </p>
+                <p>
+                  Rs {{productData.productPrice - (productData.productPrice *
+                  productData.productDiscounts[i].discountPercentage * 0.01)}}
+                </p>
+              </div>
+
+              <!--explansion plane-->
+              <div class="titleDescription">
+                <p>
+                  Description
+                </p>
+              </div>
+              <div class="toggle_arrow" *ngIf="expansionPlane[i] != 0; else expansionPlaneElse">
+                <img src="../../assets/images/toggle_arrow_up.jpg" (click)="onExpansionPlane(i)">
+              </div>
+              <ng-template #expansionPlaneElse>
+                <div class="toggle_arrow">
+                  <img src="../../assets/images//toggle_arrow_down.png" (click)="onExpansionPlane(i)">
+                </div>
+              </ng-template>
+              <div class="Description" [ngStyle]="{display: expansionPlane[i] == 0 ? 'none' : 'block'}">
+                <p>{{productData.productDiscounts[i].discountDescription}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="recommatedProduct.length != 0">
+      <!--recommedation better product discount-->
+      <div class="recommedation">
+        <div>
+          <p><strong>RECOMMENDATION</strong></p>
+        </div>
+
+        <!--RECOMMENDATION in vertical pagination-->
+        <div class="recommedationContainer">
+          <div class="recommedationProduct" *ngFor="let item of paginationReommendation; index as i">
+            <div class="productItem" (click)="onClickSendProductDetail(item.productId,item.productName)">
+              <div>
+                <!-- product image -->
+                <div class="recommendedProductImage">
+
+                  <!--showing discount percentage-->
+                  <div class="discountPercentage" *ngIf="item.productDiscounts.length">
+                    <p>{{ getMaximumDiscount(item.productDiscounts) }}% OFF</p>
+                  </div>
+                  <img class="productImageBar" src="{{productImageUrl}}{{item.productId}}">
+                </div>
+
+                <!--product details-->
+                <div>
+                  <!-- This will show the product name -->
+                  <div class="productName">
+                    <p><strong>{{ item.brandName }} </strong></p>
+                    <p><strong>{{ item.productName }} </strong></p>
+                  </div>
+                  <div class="priceDetail">
+                    <div>
+                      <!-- this will show the item origin price  -->
+                      <div class="recommendationProductRealPrice">
+                        <p><b>Price :</b></p>
+                        <p>Rs</p>
+                        <p><s> {{ item.productPrice }}</s></p>
+                      </div>
+
+                      <!-- it will show the discount price  -->
+                      <div class="recommendationDiscountPrice">
+                        <p>
+                          <b>
+                            Discount Price :
+                          </b>
+                        </p>
+                        <p><b>Rs</b></p>
+                        <p>
+                          <strong>
+                            {{item.productPrice - (item.productPrice *
+                            getMaximumDiscount(item.productDiscounts) * 0.01)}}
+                          </strong>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--pagination with shifting arrows-->
+          <div class="previousRecommendation paginationArrows" (click)="onPre()">
+            <p>
+              < </p>
+          </div>
+          <div class="nextRecommendation paginationArrows" (click)="onNext()">
+            <p> > </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-container>

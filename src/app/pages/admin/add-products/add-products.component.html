@@ -1,0 +1,66 @@
+<mat-card>
+  <h2>ADD NEW PRODUCT > {{selectedShopName}} ></h2>
+  <mat-card-content>
+    <div class="bootstrap-wrapper">
+      <div class="col-md-8 offset-md-3" style="margin-bottom: 2%;">
+        <h3>Insert Your Product Image</h3>
+        <img [src]="url" height="100" style="margin-bottom: 1%; border: 1px solid black;"><br>
+        <input type="file" (change)="onselectFile($event)">
+      </div>
+
+      <div class="row">
+        <div class="col-md-8 offset-md-3">
+          <form #productForm="ngForm" (ngSubmit)="formSubmit()">
+
+            <mat-form-field class="width100" appearance="outline">
+              <mat-label>Product Name</mat-label>
+              <input type="text" name="title" matInput required
+                #productName="ngModel"
+                [(ngModel)]="shopProduct.productName"
+                placeholder="Enter Product Name">
+                <mat-hint *ngIf="productName.invalid && productName.touched" class="error">Product name can't be empty</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Product Price</mat-label>
+              <input type="number" name="price" matInput required
+              #productPrice="ngModel"
+              [(ngModel)]="shopProduct.productPrice"
+                placeholder="Enter Price">
+              <mat-hint *ngIf="productPrice.invalid && productPrice.touched" class="error">Add Product Price</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" style="margin-left: 2%;">
+              <mat-label>Select Category</mat-label>
+
+              <mat-select name="category" [(ngModel)]="shopProduct.categoryType"  required
+              #selectCategory="ngModel">
+                <mat-option *ngFor="let c of categories" [value]="c">
+                  {{c}}
+                </mat-option>
+              </mat-select>
+              <mat-hint *ngIf="selectCategory.invalid && selectCategory.touched" class="error">Category need to be select</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field class="width100" appearance="outline">
+              <mat-label>Description</mat-label>
+              <textarea name="description" matInput rows="15" [(ngModel)]="shopProduct.productDescription"
+                placeholder="Enter Product Description"></textarea>
+
+            </mat-form-field>
+            <div class="container text-center" style="margin-top: 2%;">
+              <button style="margin-right: 2%; background-color: #2a4977; color: ghostwhite;" type="submit"
+              [disabled]="productForm.invalid"
+                mat-raised-button>Add</button>
+              <button type="reset" (click)="cleared()" mat-raised-button color="warn">Reset</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<div *ngIf="change">
+  <mat-progress-bar mode="indeterminate">
+  </mat-progress-bar>
+</div>

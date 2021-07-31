@@ -1,0 +1,41 @@
+<mat-card *ngIf="user">
+  <h2>Your Profile Details</h2>
+  <mat-card-content>
+    <div class="bootstrap-wrapper">
+      <div class="container">
+        <div class="container text-center">
+          <img src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg" alt=""
+            class="profile-img">
+          <h2 style="margin-top:1%;">{{user.id}}</h2>
+        </div>
+
+        <div class="row" style="margin-top:10px;">
+          <div class="col-md-10 offset-md-1">
+            <!-- table details -->
+            <table class="table">
+              <tr>
+                <th scope="row"></th>
+                <td>Name</td>
+                <td>{{userCompleteDetails.adminName}}</td>
+              </tr>
+              <tr>
+                <th scope="row"></th>
+                <td>Email</td>
+                <td>{{userCompleteDetails.adminEmail}}</td>
+              </tr>
+              <tr>
+                <th scope="row"></th>
+                <td>Privilege</td>
+                <td>{{user.type}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </mat-card-content>
+  <!-- <mat-card-actions class="text-center">
+    <button mat-raised-button color="primary">UPDATE</button>
+  </mat-card-actions> -->
+</mat-card>

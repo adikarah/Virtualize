@@ -1,0 +1,48 @@
+$base-background-color: #192537d1;
+$description-background-color: #fff;
+$description-color: #000;
+
+//Recommedation Container to contain all recommedation
+.recommedationContainer {
+  display: grid;
+  gap: 1vw;
+  padding: 1vw;
+  background-color: $base-background-color;
+  position: relative;
+  margin-left: 1vw;
+  margin-right: 1vw;
+
+  & > div {
+    flex-grow: 1;
+
+    & > img {
+      width: 100%;
+      height: 15vw;
+      cursor: pointer;
+    }
+  }
+
+  //recommedation description on each recommedation show on hover
+  .recommedationDescription {
+    display: none;
+    background-color: $description-background-color;
+    padding: 1vw;
+    z-index: 3;
+    border-radius: 10px;
+    opacity: 0.95;
+    color: $description-color;
+    bottom: 0vw;
+    left: 0vw;
+    position: fixed;
+    width: 40vw;
+    font-size: 1vw;
+    margin: 1vw;
+  }
+  .recommedationDescription:hover {
+    display: block;
+  }
+}
+
+.recommedationImage:hover + .recommedationDescription {
+  display: block;
+}

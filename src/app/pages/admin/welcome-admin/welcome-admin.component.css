@@ -1,0 +1,62 @@
+section .product {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 40px;
+}
+
+section .box {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 1rem;
+  background-color: #eeeae4;
+}
+
+section .product_image {
+  display: inline;
+  margin-top: 0%;
+  font-size: small;
+}
+
+section img {
+  vertical-align: middle;
+  min-height: 7.375rem;
+  max-height: 7.375rem;
+  margin: auto;
+  text-align: center;
+  min-width: 11.25rem;
+}
+
+section h4 {
+  font-weight: bolder;
+  color: #1d1b1b;
+  font-size: smaller;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+section .ele_inline2 {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin-right: 0%;
+  -webkit-margin-after: 0%;
+          margin-block-end: 0%;
+}
+
+section #btn1 {
+  float: left;
+  margin-top: 0%;
+}
+
+section #btn2 {
+  float: right;
+  font-size: small;
+}
+
+section #rows {
+  margin-bottom: 1rem;
+}
+/*# sourceMappingURL=welcome-admin.component.css.map */

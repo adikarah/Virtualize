@@ -1,0 +1,100 @@
+.slideshowContainer {
+  position: relative;
+  /* Next & previous buttons */
+  /* Position the "next button" to the right */
+  /* On hover, add a black background color with a little bit see-through */
+}
+
+.slideshowContainer .mySlides {
+  width: 100%;
+  height: 18vw;
+}
+
+.slideshowContainer .mySlides > img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slideshowContainer .mySlides > div {
+  background-color: #dee2e6;
+  position: absolute;
+  bottom: 1vw;
+  right: 1vw;
+}
+
+.slideshowContainer .mySlides > div > p {
+  line-height: 0;
+  padding-top: 1vw;
+  color: #212529;
+  font-size: 1.7vw;
+  height: 1.8vw;
+  margin-bottom: 0%;
+}
+
+.slideshowContainer .recommedationDescription {
+  display: none;
+  background-color: #555;
+  padding: 1vw;
+  z-index: 3;
+  border-radius: 10px;
+  opacity: 0.95;
+  color: #fff;
+  top: 1vw;
+  position: absolute;
+  width: 30vw;
+  margin: 9vw;
+}
+
+.slideshowContainer .dotsOnSlide {
+  text-align: center;
+  position: absolute;
+  top: 90%;
+  left: 45%;
+}
+
+.slideshowContainer .dotsOnSlide .dot {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  cursor: pointer;
+  height: 1vw;
+  width: 1vw;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  -webkit-transition: background-color 0.6s ease;
+  transition: background-color 0.6s ease;
+}
+
+.slideshowContainer .prev, .slideshowContainer .next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 0.6vw;
+  color: white;
+  font-weight: bold;
+  font-size: 2vw;
+  -webkit-transition: 0.6s ease;
+  transition: 0.6s ease;
+}
+
+.slideshowContainer .next {
+  right: 0%;
+  border-radius: 3px 0 0 3px;
+}
+
+.slideshowContainer .prev:hover, .slideshowContainer .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.slideshowContainer:hover .recommedationDescription {
+  display: block;
+}
+/*# sourceMappingURL=slide-recommedation.component.css.map */

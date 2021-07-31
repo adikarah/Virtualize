@@ -1,0 +1,35 @@
+$content-background-color: #f3e98a63;
+
+//container to contain the all notification
+.notificationContainer {
+  margin: 2vw 5vw;
+
+  //header of the container
+  .notificationHeader {
+    h1 {
+      padding: 1vw;
+    }
+  }
+
+  .notificationContentPage {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  //notification content
+  .notificationContent {
+    background-color: $content-background-color;
+    display: flex;
+    margin-bottom: 1vw;
+
+    & > img {
+      padding: 1vw;
+      width: 6vw;
+      height: 6vw;
+    }
+
+    & > a {
+      padding: 1vw;
+    }
+  }
+}

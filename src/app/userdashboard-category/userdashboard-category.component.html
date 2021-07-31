@@ -1,0 +1,49 @@
+<div class="category">
+
+  <h3>Store</h3>
+  <div class="store">
+
+    <!-- loader spinner in angular -->
+    <div *ngIf="change" class="loader-container">
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <!-- this will print all availabe strore in category bar -->
+    <div *ngFor="let storeName of getAllStoreName();  let i = index">
+      <input type="checkbox" name="{{storeName}}" value="{{storeName}}" (change)="getStore($event.target)">
+      <label title="{{storeName}}">{{storeName}}</label><br>
+    </div>
+  </div>
+
+  <h3>Product</h3>
+
+  <!-- loader spinner in angular -->
+  <div *ngIf="change" class="loader-container">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div class="store">
+    <!-- this will print all availabe product in category bar -->
+    <div *ngFor="let productName of getAllProductName()">
+      <input type="checkbox" name="{{productName}}" value="{{productName}}" (change)="getProduct($event.target)">
+      <label title="{{productName}}">{{productName}}</label><br>
+    </div>
+  </div>
+
+  <!-- price bar in category -->
+  <h3>Price</h3>
+  <div class="price" *ngFor="let price of priceBar">
+    <input type="checkbox" name="price" value="{{price.value}}" [checked]="price.isSelected"
+      (change)="getPrice($event.target)">
+    <label title="Price Less than {{price.value}}"> Less than {{price.value}}</label><br>
+  </div>
+
+  <!-- dicount bar in category -->
+  <h3>Discount</h3>
+  <div class="discount" *ngFor="let discount of discountBar">
+    <input type="checkbox" name="Discount" value="{{discount.value}}" [checked]="discount.isSelected"
+      (change)="getDiscount($event.target)">
+    <label title="Discount {{ discount.value }}% & above"> {{ discount.value }}% & above</label><br>
+  </div>
+
+</div>

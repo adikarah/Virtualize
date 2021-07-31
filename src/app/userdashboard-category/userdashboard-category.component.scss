@@ -1,0 +1,85 @@
+$shadowcolor: #c7c7c7;
+$buttoncolor: #f37c2b;
+$labelcolor: rgb(185, 184, 184);
+$barcolor: rgb(185, 184, 184);
+$barcolordark: grey;
+$cateory-background-color: #fff;
+
+@mixin border {
+  border: 0.001em solid rgb(214, 208, 208);
+  box-shadow: 1em 1em 1em $shadowcolor;
+}
+
+@mixin margin-padding($margin, $padding) {
+  margin: $margin;
+  padding: $padding;
+}
+
+@mixin width-height($width, $height) {
+  max-height: $height;
+  width: $width;
+}
+
+@mixin overflow($x, $y) {
+  overflow-x: $x;
+  overflow-y: $y;
+}
+
+.category {
+  @include border();
+  @include margin-padding(0% 0% 1% 0%, 5% 5% 5% 5%);
+  @include width-height(100%, 72vw);
+  @include overflow(hidden, auto);
+  position: sticky;
+  top: 8vw;
+  background-color: $cateory-background-color;
+
+  h3 {
+    background-color: $labelcolor;
+  }
+
+  label {
+    padding-left: 4%;
+  }
+
+  input {
+    cursor: pointer;
+  }
+
+  div {
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 1.5vw;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $barcolor;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $barcolordark;
+}
+
+//spinner design
+.loader-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  opacity: 0.1;
+  align-items: center;
+  z-index: 3;
+}

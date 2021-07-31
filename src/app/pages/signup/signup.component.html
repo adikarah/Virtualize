@@ -1,0 +1,59 @@
+<div class="signup__container">
+  <div class="container__child signup__thumbnail">
+    <div class="thumbnail__logo">
+      <img src="../../../assets/logoBest4 - Copy.png" style="width: 70% ;border-radius: 50%;">
+
+    </div>
+    <div class="thumbnail__content text-center">
+      <h1 class="heading--primary">Welcome to CouponPoint</h1>
+      <h2 class="heading--secondary">Are you ready to join the elite?</h2>
+    </div>
+
+    <div class="signup__overlay"></div>
+  </div>
+  <div class="container__child signup__form">
+    <form #signupForm="ngForm" (ngSubmit)="formSubmit()">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input class="form-control" required #username="ngModel" [(ngModel)]="user.userName" type="text" name="username"
+          id="username" placeholder="Username" required />
+        <i *ngIf="username.invalid && username.touched" class="error">*User name is required</i>
+
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control" required #email="ngModel" email [(ngModel)]="user.userEmail" type="text"
+          name="email" id="email" placeholder="Email" required />
+        <i *ngIf="email.invalid && email.touched" class="error">*Email is required!</i>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" required #password="ngModel"
+          pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{4,}$" [(ngModel)]="user.userPassword"
+          name="userPassword" type="password" type="password" name="password" id="password" placeholder="Password"
+          required />
+        <i *ngIf="password.invalid && password.touched" class="error">*Required Minimum four characters, at least one
+          letter, one number and one special character!!</i>
+      </div>
+
+      <div class="form-group">
+        <label for="username">Location</label>
+        <input class="form-control" required #location="ngModel" [(ngModel)]="user.location" type="text" name="location"
+          id="location" placeholder="Location" required />
+        <i *ngIf="location.invalid && location.touched" class="error">*Location is required</i>
+      </div>
+      <div class="m-t-lg">
+        <ul class="list-inline">
+          <li>
+            <input class="btn btn--form" [disabled]="signupForm.invalid" type="submit"
+              style="background-color: #2a4977;" value="Register" />
+          </li>
+          <li style="margin-top: 2%;">
+            <a class="signup__link" href="#" [routerLink]="['/login']">I am already a member</a>
+          </li>
+        </ul>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<mat-card>
+  <h2>ADD NEW RECOMMENDATION</h2>
+  <mat-card-content>
+    <div class="bootstrap-wrapper">
+      <div class="col-md-8 offset-md-3" style="margin-bottom: 2%;">
+        <h3>Insert Image</h3>
+        <img [src]="url" height="100" style="margin-bottom: 1%; border: 1px solid black;"><br>
+        <input type="file" (change)="onselectFile($event)">
+        <!-- <button type="button" >Upload Image</button> -->
+      </div>
+      <div class="row">
+        <div class="col-md-8 offset-md-3">
+          <form #recommendForm="ngForm" (ngSubmit)="formSubmit()">
+
+            <mat-form-field appearance="outline">
+              <mat-label>Select Category</mat-label>
+              <mat-select name="category" [(ngModel)]="recommend.categoryType" required
+               #selectCategory="ngModel">
+                <mat-option *ngFor="let c of categories" [value]="c">
+                  {{c}}
+                </mat-option>
+
+              </mat-select>
+              <mat-hint *ngIf="selectCategory.invalid && selectCategory.touched" class="error">Category need to be select</mat-hint>
+            </mat-form-field>
+
+            <form class="form-inline">
+              <div class="form-group">
+                <div class="input-group">
+                  <mat-form-field appearance="outline">
+                    <mat-label>End Date</mat-label>
+                    <input class="form-control" placeholder="yyyy-mm-dd" matInput required name="dp" [(ngModel)]="temp"
+                      ngbDatepicker #d="ngbDatepicker" d.touched
+                      #date="ngModel">
+                    <div class="input-group-append">
+                      <button style="background-color: rgb(104, 137, 151) ;" style="color: black;"
+                        class="btn btn-outline-secondary calendar fix" (click)="d.toggle()"
+                        type="button">select</button>
+                    </div>
+                    <mat-hint *ngIf="date.invalid && date.touched" class="error">Date Can't be Empty</mat-hint>
+                  </mat-form-field>
+                </div>
+              </div>
+            </form>
+
+            <mat-form-field class="width100" appearance="outline">
+              <mat-label>Description</mat-label>
+              <textarea name="description" matInput rows="14" [(ngModel)]="recommend.description"
+                placeholder="Enter Store Description"></textarea>
+
+            </mat-form-field>
+            <div class="container text-center" style="margin-top: 2%;">
+              <button type="submit" [disabled]="recommendForm.invalid" mat-raised-button style="background-color: #2a4977; color: ghostwhite;">Add</button>
+              <button type="reset" (click)="cleared()" style="margin-left: 2% ;" mat-raised-button
+                color="warn">Clear</button>
+            </div>
+          </form>
+
+        </div>
+        <div class="col-md-8 offset-md-3">
+
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+
+</mat-card>
+<div *ngIf="change">
+  <mat-progress-bar mode="indeterminate">
+  </mat-progress-bar>
+</div>

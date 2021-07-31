@@ -1,0 +1,74 @@
+stages:
+  - build_angular
+  - cloud_deploy
+cache:
+    paths:
+    - ./node_modules
+generate_artifact:
+ image: node:12-alpine
+ stage: build_angular
+ only:
+ - master
+ tags:
+  - runner-5
+ script:
+  - npm install -g @angular/cli
+  - npm install
+  - CI=false npm run build
+ artifacts:
+  paths:
+    - dist/
+ when: manual
+
+gcloud_deploy:
+  image: google/cloud-sdk:alpine
+  stage: cloud_deploy
+  dependencies:
+    - generate_artifact
+  environment: staging
+  only:
+  - master
+  tags:
+  - runner-5
+  before_script:
+  - "Servicename=virtualize"
+  - "echo $Servicename"
+  - "ServiceName=${Servicename//-}"
+  - "echo $ServiceName"
+  - "echo $CI_PROJECT_NAME"
+  - |
+    cat <<EOF >> app.yaml
+    runtime: python27
+    api_version: 1
+    threadsafe: yes
+    service: virtualize
+    instance_class: B1
+    manual_scaling:
+        instances: 1
+    handlers:
+    - url: /(.*\.(gif|png|jpg|css|js|woff|webmanifest|json|ico|txt|svg|webp)(|\.map))$
+      static_files: dist/\1
+      upload: dist/(.*)(|\.map)
+    - url: /(.*)
+      static_files: dist/index.html
+      upload: dist/index.html
+    skip_files:
+      - e2e/
+      - node_modules/
+      - src/
+      - ^(./)?\..$
+      - ^(./)?.\.json$
+      - ^(./)?.\.md$
+      - ^(./)?.\.yaml$
+      - ^LICENSE
+    EOF
+  - "cat app.yaml"
+  - echo $GCP_SERVICE_CRED > ${CI_PIPELINE_ID}.json
+  script:
+  - gcloud auth activate-service-account --key-file $CI_PIPELINE_ID.json
+  - gcloud --project hu18-groupa-java app deploy --version v1 --appyaml app.yaml
+  - url=$(gcloud app services browse $ServiceName --no-launch-browser --project hu18-groupa-java)
+  - echo $url
+  after_script:
+  - rm $CI_PIPELINE_ID.json
+  when: manual

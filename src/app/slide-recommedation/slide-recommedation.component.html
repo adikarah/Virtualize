@@ -1,0 +1,49 @@
+<!-- remove of error this was happaning due to ngOnInit slow loading -->
+<ng-container *ngIf="loaded">
+  <!-- slide recommedation image container -->
+  <div class="slideshowContainer">
+    <div class="mySlides">
+      <img src="{{recommedationImage}}{{imageIds[imageId].recommendId}}"
+        (click)="onTypeOfProduct(imageIds[imageId].categoryType)"
+        [routerLink]="'/user-container/'+imageIds[imageId].categoryType">
+
+      <!--expire date countdown-->
+      <div class="countDown">
+        <div class="eachTimer">
+          <p class="expireTime">{{days}}</p>
+          <p>DAYS</p>
+        </div>
+        <p><strong> : </strong></p>
+        <div class="eachTimer">
+          <p class="expireTime">{{hour}}</p>
+          <p>HOURS</p>
+        </div>
+        <p><strong> : </strong></p>
+        <div class="eachTimer">
+          <p class="expireTime">{{min}}</p>
+          <p>MIN</p>
+        </div>
+        <p><strong> : </strong></p>
+        <div class="eachTimer">
+          <p class="expireTime">{{sec}}</p>
+          <p>SEC</p>
+        </div>
+      </div>
+
+      <div class="recommedationDescription">
+        <p>{{imageIds[imageId].description}}</p>
+      </div>
+    </div>
+
+    <!-- button to move slide -->
+    <a class="prev" (click)="plusSlidesPrev()">&#10094;</a>
+    <a class="next" (click)="plusSlidesNext()">&#10095;</a>
+
+    <!-- dots which are place below -->
+    <div class="dotsOnSlide">
+      <div class="dot" (click)="currentSlide(0)"></div>
+      <div class="dot" (click)="currentSlide(1)"></div>
+      <div class="dot" (click)="currentSlide(2)"></div>
+    </div>
+  </div>
+</ng-container>

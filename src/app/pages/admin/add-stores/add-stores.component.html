@@ -1,0 +1,56 @@
+<mat-card>
+  <h2>ADD NEW STORE</h2>
+  <mat-card-content>
+    <div class="bootstrap-wrapper">
+      <div class="col-md-8 offset-md-3" style="margin-bottom: 2%;">
+        <h3>Insert Your Store Image</h3>
+        <img [src]="url" height="100" style="margin-bottom: 1%; border: 1px solid black;"><br>
+        <input type="file" (change)="onselectFile($event)">
+      </div>
+      <div class="row">
+        <div class="col-md-8 offset-md-3">
+          <form #shopForm="ngForm" (ngSubmit)="formSubmit()">
+            <mat-form-field class="width100" appearance="outline">
+              <mat-label>Store Name</mat-label>
+              <input type="text" name="storeTitle" matInput required #text="ngModel" [(ngModel)]="store.shopName"
+                placeholder="Enter Here">
+              <mat-hint *ngIf="text.invalid && text.touched" class="error">Store Name Can't be Empty</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Location</mat-label>
+              <input type="text" name="Location" matInput required #location="ngModel" [(ngModel)]="store.shopLocation"
+                placeholder="Enter Location">
+              <mat-hint *ngIf="location.invalid && location.touched" class="error">Store Name Can't be Empty</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" style="margin-left: 1%;">
+              <mat-label>GST Number</mat-label>
+              <input type="text" name="gst" matInput pattern="^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$"
+                required #gst="ngModel" [(ngModel)]="store.gst" placeholder="Enter GST Number">
+              <mat-hint *ngIf="gst.invalid && gst.touched" class="error">Enter Valid GST Number</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field class="width100" appearance="outline">
+              <mat-label>Description</mat-label>
+              <textarea name="description" matInput rows="14" [(ngModel)]="store.shopDescription"
+                placeholder="Enter Store Description"></textarea>
+            </mat-form-field>
+
+            <div class="container text-center" style="margin-top: 2%;">
+              <button type="submit" [disabled]="shopForm.invalid" mat-raised-button
+                style="background-color: #2a4977; color: ghostwhite;">Add</button>
+              <button type="reset" (click)="cleared()" style="margin-left: 2% ;" mat-raised-button
+                color="warn">Clear</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<div *ngIf="change">
+  <mat-progress-bar mode="indeterminate">
+  </mat-progress-bar>
+</div>

@@ -1,0 +1,95 @@
+<mat-card *ngIf="user" style="border-radius: 2%">
+
+  <mat-card-content>
+    <div class="bootstrap-wrapper">
+      <div class="container-fluid">
+        <div class="row" style="margin-top: 10px">
+          <div class="col-md-2 offset-md-1">
+            <div *ngIf="userDetails" class="container-fluid text-center">
+              <img [src]="userDetails?.photoUrl"
+                alt="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"
+                class="profile-img-google" />
+              <h4 style="margin-top: 10px;">{{userCompleteDetails.userEmail }}</h4>
+            </div>
+            <div *ngIf="userDetails==null" class="container-fluid text-center">
+              <img src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"
+                alt="" class="profile-img" />
+              <h4 style="margin-top: 10px; ">{{userCompleteDetails.userEmail }}</h4>
+            </div>
+
+          </div>
+          <div class="col-md-8">
+            <!-- table details -->
+            <mat-card>
+              <h2>Your Profile Details</h2>
+              <div style="overflow-x:auto;">
+                <table class="table">
+                  <tr>
+                    <td>Name</td>
+                    <td>{{ userCompleteDetails.userName }}</td>
+                  </tr>
+                  <tr>
+                    <td>Email</td>
+                    <td>{{ userCompleteDetails.userEmail }}</td>
+                  </tr>
+                  <tr>
+                    <td>Location</td>
+                    <td>{{ userCompleteDetails.location }}</td>
+                  </tr>
+                </table>
+              </div>
+
+            </mat-card>
+
+            <mat-card style="margin-top: 1%;">
+              <h2>Interest</h2>
+              <!-- -->
+              <div class="text-right" [class.changestyle]="check">
+                <button (click)="addInterest()" mat-raised-button style="margin-right: 2%; background-color: #2a4977; color: ghostwhite;">
+                  Add Interest
+                </button>
+                <hr>
+              </div>
+              <!-- -->
+              <mat-list [class.changestyle]="check">
+                <mat-list-item *ngFor="let u of userInterest">
+                  <mat-divider></mat-divider>
+                  <h3 mat-line>
+                    {{u.interest}}
+                  </h3>
+                  <button (click)="onDeleteInterest(u)" mat-mini-fab color="warn"
+                    aria-label="Example icon button with a delete icon" style="float: right;">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+
+                </mat-list-item>
+              </mat-list>
+              <!-- -->
+              <mat-list [class.addInterest]="add">
+                <mat-list-item>
+                  <mat-form-field appearance="outline" style="width: 100%; margin-top: 2%;">
+                    <mat-label>Choose Your Interest</mat-label>
+                    <mat-select name="category" [(ngModel)]="data.interest">
+                      <mat-option *ngFor="let c of categories" [value]="c">
+                        {{c}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                </mat-list-item>
+                <mat-list-item style="margin-top: 1%;">
+                  <button (click)="addValue()" style="margin-right: 2%; background-color: #2a4977; color: ghostwhite;" type="submit"
+                mat-raised-button>Add</button>
+
+                </mat-list-item>
+              </mat-list>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+  <!-- <mat-card-actions class="text-center" style="margin-left: 3%;">
+    <button mat-raised-button color="primary">UPDATE</button>
+  </mat-card-actions> -->
+</mat-card>

@@ -1,0 +1,288 @@
+$base-color: #192537d1;
+$base-box-word-color: #fff;
+$base-name-color: #312b2b;
+$base-real-price-color: #9f9f9f;
+$base-background-color: #fff;
+$label-color: rgb(58, 86, 128);
+$second-base-color: #33cd37;
+
+body {
+  line-height: 0%;
+}
+
+//default design for paragraph
+p {
+  margin: 0;
+  font-size: 1vw;
+  font-family: SuisseIntl, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+// product list
+.list
+{
+    display: grid;
+    grid-template-columns: repeat(4, 23.8%);
+    width: 99%;
+    gap: 1.5vw;
+}
+
+//images of product
+img {
+  width: 100%;
+  height: 100%;
+}
+
+//product container
+.productItem {
+  box-shadow: 0px 3px 6px rgb(0 0 0 / 50%);
+  border-radius: 8%;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  line-height: initial;
+  background-color: $base-background-color;
+
+  & > div {
+    margin: 1.5vw;
+    display: grid;
+    grid-template-rows: 80% 30%;
+    height: 18vw;
+  }
+}
+
+//discount and image of product
+.productImage {
+  position: relative;
+
+  .productImageBar {
+    cursor: pointer;
+  }
+}
+
+//show the percentage of discount
+.discountPercentage {
+  background-color: $base-color;
+  border-radius: 6%;
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  color: $base-box-word-color;
+  padding: 0vw 1vw;
+  border-radius: 1vw 0vw;
+}
+
+//price detail of product
+.priceDetail {
+  display: grid;
+  grid-template-columns: 60% 40%;
+
+  .realPrice {
+    display: flex;
+    width: 13vw;
+    justify-content: space-between;
+    color: $base-real-price-color;
+    & > p:first-child {
+      color: $label-color;
+    }
+  }
+
+  .discountPrice {
+    display: flex;
+    width: 13vw;
+    justify-content: space-between;
+    color: $base-color;
+    & > p {
+      color: $second-base-color;
+    }
+    & > p:first-child {
+      color: $label-color;
+    }
+  }
+
+  .expireData {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+  }
+}
+
+//add to favorite
+.favouriteProduct {
+  display: flex;
+  border: 1px solid $base-color;
+  text-align: right;
+  height: 33px;
+  border-radius: 4%;
+  grid-column: 3;
+  height: 100%;
+}
+
+//Name of the product
+.productName {
+  color: $base-name-color;
+  overflow: hidden;
+  width: 100%;
+  height: 30%;
+  text-overflow: ellipsis;
+
+  & > p {
+    font-size: 1.2vw;
+  }
+}
+
+//dialog box for product quick view
+.dialogBox {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* dialog box Content */
+.dialogBoxContent {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 1.8vw;
+  border: 1px solid #888;
+  width: 40%;
+  border-radius: 2vw;
+
+  & > div {
+    display: grid;
+    gap: 1vw;
+
+    .dialogBoxProductDetail {
+      display: flex;
+      flex-direction: column;
+      gap: 1vw;
+    }
+  }
+}
+
+//dialogBox Title and close button
+.dialogBoxTitle {
+  display: flex;
+  justify-content: space-between;
+  background: $base-color;
+  height: 100%;
+  color: $base-box-word-color;
+  align-items: center;
+  padding: 0vw 0.5vw 0vw 1vw;
+  border-radius: 1vw 0vw;
+
+  & > div > p {
+    font-size: 2vw;
+    padding-top: 0.2vw;
+  }
+
+  .close {
+    cursor: pointer;
+    padding-bottom: 1vw;
+  }
+}
+
+//dialogBox Product Name
+.dialogBoxProductName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: $base-name-color;
+  height: 2.3vw;
+
+  & > p {
+    font-size: 2vw;
+    padding-top: 1vw;
+    line-height: 0;
+  }
+}
+
+//dialogBox Product Price
+.dialogBoxProductPrice {
+  display: flex;
+  gap: 3%;
+
+  & > p:nth-child(1) {
+    color: $second-base-color;
+    font-size: 2vw;
+  }
+
+  & > p:nth-child(2) {
+    color: $base-real-price-color;
+    font-size: 2vw;
+  }
+
+  & > p:nth-child(3) {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 2vw;
+  }
+}
+
+#dialogBoxPriceHeading {
+  font-size: 2vw;
+  color: $base-box-word-color;
+  background-color: $base-color;
+  text-align: center;
+  height: 2vw;
+  padding-top: 1vw;
+  line-height: 0;
+  border-radius: 1vw 0vw;
+}
+
+//dialogBox Offers of product
+.dialogBoxOffers {
+  width: 100%;
+
+  & > div:nth-child(1) {
+    width: 100%;
+
+    & > p {
+      background-color: $base-color;
+      color: $base-box-word-color;
+      font-size: 2vw;
+      padding: 0% 20%;
+      text-align: center;
+      height: 2vw;
+      padding-top: 1vw;
+      line-height: 0;
+      border-radius: 1vw 0vw;
+    }
+  }
+}
+
+.dialogBoxProductOffers {
+  display: flex;
+  justify-content: space-between;
+
+  & > p {
+    font-size: 1.5vw;
+    color: $base-name-color;
+  }
+}
+
+//dialogBox button to go Product page
+.dialogBoxProductMoreDetail {
+  text-align: center;
+  box-shadow: 0px 3px 6px $base-color;
+  & > a {
+    color: $base-color;
+  }
+}
+
+//spinner design
+.loader-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.1;
+  z-index: 3;
+}

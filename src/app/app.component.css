@@ -1,0 +1,18 @@
+.sticky {
+  overflow: hidden;
+  position: -webkit-sticky;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  width: 100%;
+  margin-bottom: 50%;
+}
+
+.notificationBar {
+  z-index: 2;
+  width: 30px;
+  position: fixed;
+  right: 15.5vw;
+  top: 12px;
+}
+/*# sourceMappingURL=app.component.css.map */

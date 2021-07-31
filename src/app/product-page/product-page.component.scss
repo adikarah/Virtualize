@@ -1,0 +1,413 @@
+$box-shadow-color: #00000029;
+$name-color: #666;
+$base-box-word-color: #fff;
+$base-color: #192537d1;
+$title-color: #fff;
+$background-color: #fff;
+$barcolor: rgb(185, 184, 184);
+$barcolordark: grey;
+$base-background-color: #fff;
+$pagination-arrow-background-color: rgb(204, 194, 194);
+$label-color: rgb(58, 86, 128);
+$second-base-color: #33cd37;
+
+//fix the position for resposne size
+@mixin fixPosition($paddingTop) {
+  & > p {
+    line-height: 0;
+    padding-top: $paddingTop;
+  }
+}
+
+//card padding and box-shadow
+@mixin card($padding-value) {
+  box-shadow: 0px 3px 6px $box-shadow-color;
+  border-radius: 2vw;
+  padding: $padding-value;
+}
+
+//title design
+@mixin title($text-align-value) {
+  background-color: $base-color;
+  color: $title-color;
+  text-align: $text-align-value;
+  border-radius: 1vw 1vw 0vw 0vw;
+  left: 0vw;
+  line-height: 0;
+  padding: 1vw;
+  width: 100%;
+}
+
+//detail design in type,size and price
+@mixin detailDesign {
+  display: grid;
+  grid-template-columns: 30% 70%;
+
+  & > p {
+    color: $name-color;
+    font-size: 1vw;
+    line-height: 0;
+    padding-top: 2vw;
+  }
+
+  & > p:first-child {
+    color: $base-color;
+    font-size: 1.2vw;
+  }
+}
+
+//default design of paragraph
+p {
+  margin: 0;
+  font-family: SuisseIntl, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1.4vw;
+}
+
+//detail of product with image
+.productDetail {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  gap: 1vw;
+  margin: 2vw;
+
+  .productImage {
+    background-color: $background-color;
+    height: fit-content;
+    border-radius: 2vw;
+    //image of product
+    > img {
+      @include card(1vw);
+      width: 100%;
+      height: 35vw;
+    }
+  }
+
+  //product detail part like name,price,discount,type,etc
+  & > div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+
+    .productInfo,
+    .productOffer,
+    .recommedation {
+      @include card(1vw);
+      background-color: $background-color;
+      border-radius: 2vw;
+    }
+
+    //product discounts
+    .productOffer {
+      display: grid;
+      gap: 1vw;
+      position: relative;
+      padding-top: 3vw;
+
+      //title of discount
+      & > p:first-child {
+        @include title(center);
+        position: absolute;
+      }
+
+      //each discount of product
+      .productDiscount {
+        border: 1px solid $base-color;
+        border-radius: 5px;
+
+        //discount part of product
+        & > div {
+          display: grid;
+          grid-template-columns: 53% 47%;
+          gap: 2vw;
+          margin: 1vw;
+          width: 94%;
+
+          .productDiscountName {
+            color: $name-color;
+            @include fixPosition(1vw);
+            padding-left: 1vw;
+          }
+
+          .productDiscountPercentage {
+            color: $base-color;
+            @include fixPosition(1vw);
+            padding-right: 1vw;
+            text-align: right;
+          }
+
+          .productDiscountExpireTitle {
+            @include title(left);
+            padding-left: 1vw;
+            border-radius: 1vw 0vw 1vw 0vw;
+            width: 10vw;
+            height: 1vw;
+          }
+
+          .productDiscountExpireDays {
+            @include fixPosition(1vw);
+            padding-right: 1vw;
+            text-align: right;
+          }
+
+          .toggle_arrow {
+            grid-column-start: 2;
+            text-align: end;
+            padding-right: 1vw;
+
+            & > img {
+              width: 1vw;
+              cursor: pointer;
+            }
+          }
+
+          //discount price of each discount present on product
+          .discountPrice {
+            @include fixPosition(1vw);
+            grid-area: 3/1/4/3;
+            padding-left: 1vw;
+            display: grid;
+            grid-template-columns: 30% 70%;
+
+            & > p:last-child {
+              color: $second-base-color;
+              font-size: 1.2vw;
+            }
+          }
+
+          .titleDescription {
+            @include fixPosition(1vw);
+            padding-left: 1vw;
+          }
+        }
+      }
+
+      //product discount hovering affect
+      .productDiscount:hover {
+        box-shadow: 0px 3px 6px $base-color;
+      }
+    }
+
+    // Description of product and discount
+    .Description {
+      grid-column: span 2;
+      max-height: 40vw;
+      overflow: auto;
+      padding: 1vw;
+
+      & > p {
+        font-size: 1vw;
+      }
+    }
+
+    //product detail
+    .productInfo {
+      position: relative;
+
+      & > p:first-child {
+        @include title(center);
+        top: 0vw;
+        width: 100%;
+        position: absolute;
+        border-radius: 1vw 1vw 0vw 0vw;
+        left: 0vw;
+      }
+
+      & > div {
+        //div which contain name,type and size
+        & > div:first-child {
+          width: 100%;
+        }
+
+        //product type
+        .productType {
+          @include detailDesign();
+        }
+
+        .productDescription {
+          display: flex;
+          justify-content: space-between;
+          line-height: 0;
+          padding-top: 3vw;
+        }
+
+        .Product_toggle_arrow {
+          text-align: end;
+          padding-right: 1vw;
+
+          & > img {
+            width: 1vw;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    //product and shop name
+    .productName {
+      color: $name-color;
+      line-height: 0;
+      padding-top: 2vw;
+
+      & > p:first-child {
+        margin-bottom: 1.5vw;
+      }
+    }
+
+    // original price of product
+    .productRealPrice {
+      @include detailDesign();
+    }
+  }
+}
+
+//recommedation better product discount
+.recommedation {
+  @include card(1vw);
+  background-color: $background-color;
+  margin: 1vw;
+  height: 30vw;
+  position: relative;
+
+  //for the recommendation title
+  & > div:first-child {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+
+    p {
+      @include title(center);
+      border-radius: 1vw 1vw 0vw 0vw;
+      padding: 1.5vw;
+      margin-bottom: 1vw;
+    }
+  }
+
+  //recommendation container which contain all details of product
+  .recommedationContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 100%;
+    height: 85%;
+    margin: 3vw 1vw 1vw 1vw;
+    gap: 1vw;
+
+    //recommendation card
+    .productItem {
+      box-shadow: 0px 3px 6px rgb(0 0 0 / 50%);
+      border-radius: 8%;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      line-height: initial;
+      background-color: $base-background-color;
+      padding-bottom: 1vw;
+      cursor: pointer;
+
+      & > div {
+        margin: 1.5vw;
+        display: grid;
+        grid-template-rows: 74% 30%;
+        height: 20vw;
+      }
+
+      /*image of recommended product in each card
+            discount and image of product */
+      .recommendedProductImage {
+        position: relative;
+        padding-left: 2vw;
+
+        //each recommendation product image
+        .productImageBar {
+          width: 90%;
+          height: 100%;
+        }
+      }
+
+      //show the percentage of discount
+      .discountPercentage {
+        background-color: $base-color;
+        border-radius: 6%;
+        position: absolute;
+        top: 2%;
+        left: 2%;
+        color: $base-box-word-color;
+        display: flex;
+        padding: 0vw 1vw;
+        border-radius: 1vw 0vw;
+      }
+    }
+    /* original price and discount price of each recommended product */
+    .recommendationProductRealPrice,
+    .recommendationDiscountPrice {
+      display: grid;
+      grid-template-columns: 50% 7% 20%;
+
+      & > p {
+        font-size: 1vw;
+        line-height: 0;
+        padding-top: 1vw;
+        color: $label-color;
+      }
+    }
+
+    .recommendationProductRealPrice > p:not(:first-child) {
+      color: $name-color;
+    }
+
+    .recommendationDiscountPrice > p:not(:first-child) {
+      color: $second-base-color;
+    }
+
+    /*
+        *shifting arrow for pagination in recommendation
+        */
+    .paginationArrows {
+      width: 1.4vw;
+      height: 2.5vw;
+      position: absolute;
+      top: 15vw;
+      line-height: 0;
+      padding-top: 1.2vw;
+    }
+    .paginationArrows:hover {
+      background-color: $pagination-arrow-background-color;
+    }
+
+    .previousRecommendation {
+      left: 0;
+    }
+
+    .nextRecommendation {
+      right: 0;
+    }
+  }
+}
+
+//heading of the product page
+h2 {
+  margin-left: 2vw;
+}
+
+//scroll bar design
+::-webkit-scrollbar {
+  width: 1vh;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $barcolor;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $barcolordark;
+}

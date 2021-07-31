@@ -1,0 +1,61 @@
+<mat-card>
+  <h1>ADD NEW DISCOUNT</h1>
+  <mat-card-content>
+    <div class="bootstrap-wrapper">
+      <div class="row">
+        <div class="col-md-8 offset-md-3">
+          <form #discountForm="ngForm" (ngSubmit)="formSubmit()">
+            <mat-form-field class="width100" appearance="outline">
+              <mat-label>Discount Name</mat-label>
+              <input type="text" name="title" matInput
+              required #text="ngModel"
+              [(ngModel)]="discount.discountName"
+                placeholder="Enter Here">
+                <mat-hint *ngIf="text.invalid && text.touched" class="error">Discount Name Can't be Empty</mat-hint>
+            </mat-form-field>
+
+            <form class="form-inline">
+              <div class="form-group">
+                <div class="input-group">
+                  <mat-form-field appearance="outline">
+                    <mat-label>End Date</mat-label>
+                    <input class="form-control" placeholder="yyyy-mm-dd" matInput required name="dp" [(ngModel)]="temp"
+                      ngbDatepicker #d="ngbDatepicker" #date="ngModel">
+                    <div class="input-group-append">
+                      <button style="background-color: rgb(104, 137, 151) ;" style="color: black;"
+                        class="btn btn-outline-secondary calendar fix" (click)="d.toggle()"
+                        type="button">select</button>
+                    </div>
+                    <mat-hint *ngIf="date.invalid && date.touched" class="error">Date Can't be Empty</mat-hint>
+                  </mat-form-field>
+                </div>
+              </div>
+            </form>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Discount Percentage</mat-label>
+              <input type="number" name="Percentage" matInput required [(ngModel)]="discount.discountPercentage"
+                placeholder="Enter Discount Percentage" #perc ="ngModel">
+                <mat-hint *ngIf="perc.invalid && perc.touched" class="error">Provide Discount Percentage</mat-hint>
+            </mat-form-field>
+            <mat-form-field class="width100" appearance="outline">
+              <mat-label>Description</mat-label>
+              <textarea name="description" matInput rows="14" placeholder="Enter Discount Description"></textarea>
+
+            </mat-form-field>
+            <div class="container text-center" style="margin-top: 2%;">
+              <button type="submit" [disabled]="discountForm.invalid" mat-raised-button style="background-color: #2a4977; color: ghostwhite;">Add</button>
+              <button type="reset" (click)="cleared()" style="margin-left: 2% ;" mat-raised-button color="warn">Clear</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<div *ngIf="change">
+  <mat-progress-bar mode="indeterminate">
+  </mat-progress-bar>
+</div>
+

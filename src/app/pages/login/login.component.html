@@ -1,0 +1,46 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<!-- <h2>Weekly Coding Challenge #1: Sign in/up Form</h2> -->
+<div *ngIf = "change" class="loader-container">
+  <mat-spinner  style="top: 40%; left: 45%;" ></mat-spinner>
+</div>
+
+<div class="container" id="container">
+    <div class="form-container sign-in-container">
+        <form action="#" (ngSubmit)="formSubmit()">
+            <h1>Sign in</h1>
+            <div style="width: 100%;" *ngIf="selectAdmin==false">
+                <a class="btn btn-outline-dark" (click)="signInHandler()" role="button" style="text-transform:none;width: 100%;">
+                    <img width="20px" style="margin-bottom:3px; margin-right:5px;" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" /> Login with Google
+                </a>
+            </div>
+            <span *ngIf="selectAdmin==false">or use your account</span>
+
+            <input [(ngModel)]="login.id" name=id type="email" placeholder="Email" />
+
+            <input [(ngModel)]="login.password" name="password" type="password" placeholder="Password" />
+
+            <mat-form-field appearance="outline" style="width: 100%">
+                <mat-label>Login As</mat-label>
+                <mat-select name="category" [(ngModel)]="login.type">
+                    <mat-option *ngFor="let c of categories" [value]="c">
+                        {{c}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <a href="#" [routerLink]="['/forgot-password']">Forgot your password?</a>
+            <button style="background-color: #2a4977;">Sign In</button>
+        </form>
+    </div>
+
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="signup__overlay"></div>
+            <div class="overlay-panel overlay-right" id="singUp">
+                <h1>Hello, User!</h1>
+                <p>Enter your personal details and start journey with us</p>
+                <button class="ghost" id="signUp" [routerLink]="['/signup']">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>

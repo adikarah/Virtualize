@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAA;EACR,KAAK,EAAC,IAAI;CACV",
+    "sources": [
+        "add-stores.component.scss"
+    ],
+    "names": [],
+    "file": "add-stores.component.css"
+}

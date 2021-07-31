@@ -1,0 +1,48 @@
+<mat-card class="card" style="background-color: rgb(204, 215, 221);">
+  <div mat-subheader class="card-header">
+    Menu
+  </div>
+  <ul class="list-group list-group-flush">
+    <button mat-list-item class="list-group-item text-left" (click)="onClickCurrentPage(0)"
+      [ngStyle]="{'background-color': currentPage[0] == 0 ? 'rgb(204, 215, 221)' : 'rgb(0 0 0 / 15%)'}"
+      routerLink="/admin">
+      <div class="fix">
+        <mat-icon mat-icon>dashboard</mat-icon>
+        <p>Dashboard</p>
+      </div>
+
+    </button>
+    <button mat-list-item class="list-group-item text-left" (click)="onClickCurrentPage(1)"
+      [ngStyle]="{'background-color': currentPage[1] == 0 ? 'rgb(204, 215, 221)' : 'rgb(0 0 0 / 12%)'}"
+      routerLink="/admin/profile">
+      <div class="fix">
+        <mat-icon mat-icon>account_circle</mat-icon>
+        <p>Profile</p>
+      </div>
+    </button>
+    <button mat-list-item class="list-group-item text-left" (click)="onClickCurrentPage(2)"
+      [ngStyle]="{'background-color': currentPage[2] == 0 ? 'rgb(204, 215, 221)' : 'rgb(0 0 0 / 12%)'}"
+      routerLink="/admin/stores">
+      <div class="fix">
+        <mat-icon mat-icon>store</mat-icon>
+        <p>Manage Stores</p>
+      </div>
+    </button>
+    <button mat-list-item class="list-group-item text-left" (click)="onClickCurrentPage(3)"
+      [ngStyle]="{'background-color': currentPage[3] == 0 ? 'rgb(204, 215, 221)' : 'rgb(0 0 0 / 12%)'}"
+      routerLink="/admin/add-store">
+      <div class="fix">
+        <mat-icon mat-icon>add_circle_outline</mat-icon>
+        <p>Add Store</p>
+      </div>
+    </button>
+    <button mat-list-item class="list-group-item text-left" (click)="onClickCurrentPage(4)"
+      [ngStyle]="{'background-color': currentPage[4] == 0 ? 'rgb(204, 215, 221)' : 'rgb(0 0 0 / 12%)'}"
+      routerLink="/admin/add-recommendation">
+      <div class="fix">
+        <mat-icon mat-icon>stars</mat-icon>
+        <p>Add Recommendation</p>
+      </div>
+    </button>
+  </ul>
+</mat-card>

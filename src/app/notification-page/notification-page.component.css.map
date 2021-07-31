@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAGA,AAAA,sBAAsB,CAAA;EAClB,MAAM,EAAE,OAAO;CAyBlB;;AA1BD,AAKQ,sBALc,CAIlB,mBAAmB,CACf,EAAE,CAAA;EACE,OAAO,EAAE,GAAG;CACf;;AAPT,AAWI,sBAXkB,CAWlB,oBAAoB,CAAA;EAChB,gBAAgB,EAfG,SAAS;EAgB5B,OAAO,EAAE,IAAI;EACb,aAAa,EAAE,GAAG;CAWrB;;AAzBL,AAgBQ,sBAhBc,CAWlB,oBAAoB,GAKd,GAAG,CAAA;EACD,OAAO,EAAE,GAAG;EACZ,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,GAAG;CACd;;AApBT,AAsBQ,sBAtBc,CAWlB,oBAAoB,GAWd,CAAC,CAAA;EACC,OAAO,EAAE,GAAG;CACf",
+    "sources": [
+        "notification-page.component.scss"
+    ],
+    "names": [],
+    "file": "notification-page.component.css"
+}

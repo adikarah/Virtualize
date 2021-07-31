@@ -1,0 +1,53 @@
+.category {
+  border: 0.001em solid #d6d0d0;
+  -webkit-box-shadow: 1em 1em 1em #c7c7c7;
+          box-shadow: 1em 1em 1em #c7c7c7;
+  margin: 0% 0% 1% 0%;
+  padding: 1% 1% 5% 1%;
+  height: 100%;
+  width: 16%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: fixed;
+  background-color: #fff;
+}
+
+.category h3 {
+  background-color: #b9b8b8;
+}
+
+.category label {
+  padding-left: 4%;
+}
+
+.category input {
+  cursor: pointer;
+}
+
+.category div {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+::-webkit-scrollbar {
+  width: 2vh;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px grey;
+          box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b9b8b8;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: grey;
+}
+/*# sourceMappingURL=userdashboard-category.component.css.map */

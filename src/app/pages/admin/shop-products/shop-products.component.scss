@@ -1,0 +1,15 @@
+.example-header-image {
+  background-image: url("../../../../assets/pizza.png");
+  background-size: cover;
+}
+#myInput {
+  width: 17vw;
+}
+
+.loader-container {
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  opacity: 0.2;
+  z-index: 3;
+}

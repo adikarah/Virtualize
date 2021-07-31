@@ -1,0 +1,43 @@
+<div *ngIf="change" class="loader-container" style="margin-bottom: 20%;">
+  <mat-spinner style="top: 40%; left: 45%;"></mat-spinner>
+</div>
+<mat-card>
+  <h2>ALL STORES</h2>
+  <div class="text-right">
+
+    <button routerLink="/admin/add-store" mat-raised-button style="background-color: #2a4977; color: ghostwhite;">Add
+      New Store</button>
+  </div>
+  <ul class="list-group list-group-flush" *ngFor="let s of userStores">
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-sm">
+
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image">
+              <img src="{{shopImageUrl}}{{s.shopId}}" alt="" style="width: 70px; border-radius: 50%;">
+            </div>
+            <mat-card-title class="shop-Products" style="color: rgb(177, 106, 106);" style="margin-left: 2rem;">
+              {{s.shopName}}</mat-card-title>
+            <mat-card-subtitle style="margin-left: 2rem;">Delhi</mat-card-subtitle>
+
+          </mat-card-header>
+
+        </div>
+        <div class="col-sm">
+          <p style="color: rgb(52, 111, 179); ">This is Description of Shop</p>
+        </div>
+
+        <div class="col-sm">
+          <button (click)="addProduct(s)" routerLink="/admin/add-product" mat-flat-button
+            style="margin-right: 2%; margin-top: 1rem; background-color: #2a4977; color: ghostwhite;">Add
+            Product</button>
+          <button (click)="onUpdateStore(s)" routerLink="/admin/update-store" mat-flat-button
+            style="margin-right: 2%; margin-top:1rem ; background-color: #2a4977; color: ghostwhite;">Update</button>
+          <button (click)="onDelStore(s)" mat-flat-button color="warn" style="margin-top: 1rem;">Delete</button>
+        </div>
+      </div>
+    </li>
+    <hr>
+  </ul>
+</mat-card>

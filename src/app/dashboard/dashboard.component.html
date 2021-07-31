@@ -1,0 +1,167 @@
+<!-- title -->
+<div class="productBar">
+
+  <h2><a [routerLink]="['/']">HOME </a> > {{typeOfProduct}}</h2>
+</div>
+
+<!-- loader spinner in angular -->
+<div *ngIf="change" class="loader-container">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="list" *ngIf="productData.length != 0; else emptyRecord">
+  <!-- continer to store brands,product,offer-->
+  <div *ngFor="let item of productData">
+    <div class="productItem">
+      <div>
+        <!-- product image -->
+        <div class="productImage">
+
+          <!--showing discount percentage-->
+          <div class="discountPercentage" *ngIf="item.productDiscounts.length">
+            <p>{{ getMaximumDiscount(item.productDiscounts) }}% OFF</p>
+          </div>
+          <img class="productImageBar" src="{{productImageUrl}}{{item.productId}}" alt="product_image"
+            (click)="onClickProductData(item.productId)">
+        </div>
+
+        <!--product details-->
+        <div>
+          <!-- This will show the product name -->
+          <div class="productName">
+            <p><strong>{{ item.brandName }} {{ item.productName }} </strong></p>
+          </div>
+          <div class="priceDetail">
+            <div>
+              <!-- this will show the item origin price  -->
+              <div class="realPrice">
+                <p><b> Price: </b></p>
+                <p><s>Rs {{ item.productPrice }}</s></p>
+              </div>
+
+              <!-- it will show the discount price  -->
+              <div class="discountPrice">
+                <p><b>Discount Price :</b></p>
+                <p><strong>Rs {{item.productPrice-(item.productPrice*
+                    getMaximumDiscount(item.productDiscounts)*0.01)}}
+                  </strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #emptyRecord>
+  <p *ngIf="flagForNoRecord">No Record Found</p>
+</ng-template>
+
+<!--dialogBox for quick view of product-->
+<div class="dialogBox" *ngIf="flag2 != 0">
+  <!-- Modal content -->
+  <div class="dialogBoxContent">
+    <div *ngIf="dialogBoxProduct.productDiscounts.length; else elseBlockForDialogBox">
+      <!--close button and title-->
+      <div class="dialogBoxTitle">
+        <div>
+          <p>QUICK VIEW</p>
+        </div>
+        <div>
+          <p class="close" (click)="onclickClose()">&times;</p>
+        </div>
+      </div>
+
+      <!--product and shop name-->
+      <div class="dialogBoxProductName">
+        <p><strong>{{dialogBoxProduct.productName}}</strong></p>
+      </div>
+
+      <!--product image-->
+      <div>
+        <img src="{{productImageUrl}}{{dialogBoxProduct.productId}}" />
+      </div>
+
+      <!--product price-->
+      <div class="dialogBoxProductDetail">
+        <div>
+          <p id="dialogBoxPriceHeading"><b>PRICE</b></p>
+        </div>
+        <div class="dialogBoxProductPrice">
+          <p>Rs
+            {{dialogBoxProduct.productPrice-(dialogBoxProduct.productPrice*dialogBoxProduct.productDiscounts[0].discountPercentage*0.01)}}
+          </p>
+          <p><s>Rs {{dialogBoxProduct.productPrice}}</s></p>
+          <p><strong>{{dialogBoxProduct.productDiscounts[0].discountPercentage}}% OFF</strong></p>
+        </div>
+      </div>
+
+      <!--product offers-->
+      <div class="dialogBoxOffers">
+        <div>
+          <p><strong>OFFER</strong></p>
+        </div>
+        <div class="dialogBoxProductOffers" *ngFor="let item of dialogBoxProduct.productDiscounts; let i=index">
+          <p>{{dialogBoxProduct.productDiscounts[i].discountName}}</p>
+          <p>{{dialogBoxProduct.productDiscounts[i].discountPercentage}}%</p>
+        </div>
+      </div>
+
+      <!--go to product detail page-->
+      <div class="dialogBoxProductMoreDetail">
+        <a [routerLink]="'/product-page'" (click)="onClickSendProductDetail(dialogBoxProduct.productId)">
+          View more details
+        </a>
+      </div>
+    </div>
+
+    <!-- else part for dialog box -->
+    <ng-template #elseBlockForDialogBox>
+      <div>
+        <!-- close button and title-->
+        <div class="dialogBoxTitle">
+          <div>
+            <p>QUICK VIEW</p>
+          </div>
+          <div>
+            <p class="close" (click)="onclickClose()">&times;</p>
+          </div>
+        </div>
+
+        <!--product and shop name-->
+        <div class="dialogBoxProductName">
+          <p><strong>{{dialogBoxProduct.productName}}</strong></p>
+        </div>
+
+        <!--product image-->
+        <div>
+          <img src="{{productImageUrl}}{{dialogBoxProduct.productId}}" />
+        </div>
+
+        <div>
+          <!--product price-->
+          <div class="dialogBoxProductDetail">
+            <div>
+              <p id="dialogBoxPriceHeading"><b>PRICE</b></p>
+            </div>
+            <div class="dialogBoxProductPrice">
+              <p>Rs
+                {{dialogBoxProduct.productPrice}}
+              </p>
+            </div>
+            <br>
+          </div>
+
+          <!--go to product detail page-->
+          <div class="dialogBoxProductMoreDetail">
+            <a [routerLink]="'/product-page'" (click)="onClickSendProductDetail(dialogBoxProduct.productId)">
+              View more details
+            </a>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

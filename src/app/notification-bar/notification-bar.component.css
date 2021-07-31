@@ -1,0 +1,119 @@
+.notification-set {
+  width: 2vw;
+}
+
+.dropbtn {
+  padding: 0%;
+  border: none;
+  cursor: pointer;
+  border-radius: 100%;
+}
+
+.dropbtn > img {
+  width: 100%;
+  border-radius: 70%;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  width: 20vw;
+  left: -9vw;
+  -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 4;
+  max-height: 30vw;
+  overflow: auto;
+}
+
+.dropdown-content .notificationTitle {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0%;
+  z-index: 1;
+  background-color: #fff;
+  height: 2vw;
+}
+
+.dropdown-content .notificationTitle > p {
+  font-size: 1.4vw;
+  line-height: 0;
+  padding-top: 1vw;
+  padding-left: 1vw;
+}
+
+.dropdown-content .notificationContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.dropdown-content .notificationContent > img {
+  margin: 0.5vw;
+  width: 2vw;
+  height: 3vw;
+}
+
+.dropdown-content .notificationContent > p {
+  margin: 1vw;
+  font-size: 1.3vw;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  color: #298f92;
+}
+
+.dropdown-content .viewAllNotification {
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0%;
+  z-index: 1;
+  background-color: #fff;
+  height: 2.5vw;
+  text-align: center;
+  line-height: 0;
+  font-size: 1vw;
+  padding-top: 0.5vw;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 1vh;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px grey;
+          box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b9b8b8;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: grey;
+}
+/*# sourceMappingURL=notification-bar.component.css.map */

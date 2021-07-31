@@ -1,0 +1,11 @@
+button {
+  background-color: rgb(204, 215, 221);
+}
+
+.fix {
+  display: flex;
+  & > p {
+    width: 100%;
+    padding-left: 0.5vw;
+  }
+}

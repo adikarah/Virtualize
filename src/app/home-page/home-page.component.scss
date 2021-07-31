@@ -1,0 +1,53 @@
+$header-color: #192537d1;
+$sreach-bar-background-color: rgb(240, 204, 126);
+$shadow-box-color: black;
+
+//default setting
+p {
+  margin: 0;
+  font-size: 1vw;
+  font-family: SuisseIntl, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+//heading
+h1 {
+  padding: 3vw 0vw 0vw 3vw;
+  line-height: 1vw;
+  color: $header-color;
+}
+
+//container header with sreach bar
+.containerHeader {
+  display: flex;
+  justify-content: space-between;
+  height: 5vw;
+}
+
+//angular material for grid
+mat-grid-list {
+  margin: 2vw;
+}
+
+//particular cell in grid
+mat-grid-tile {
+  border-radius: 10px;
+  box-shadow: 5px 5px 4px $shadow-box-color;
+
+  //image of product type
+  .typesOfProductImage {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  //name of the types of product
+  .mat-grid-tile-footer {
+    justify-content: center;
+    height: 6vw;
+    cursor: pointer;
+    & > p {
+      font-size: 1.5vw;
+    }
+  }
+}

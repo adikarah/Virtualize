@@ -1,0 +1,19 @@
+<!--container to contain the all notification-->
+<div class="notificationContainer">
+  <!--header of the container-->
+  <div class="notificationHeader">
+    <h1><strong>Notification</strong></h1>
+  </div>
+  <hr>
+  <!--notification content-->
+  <div class="notificationContentPage">
+    <div *ngFor="let notification of getAllNotification()">
+      <div class="notificationContent">
+        <img src="{{recommedationImage}}{{notification.recommendId}}">
+        <a [routerLink]="'/user-container/'+ notification.categoryType"
+          (click)="onTypeOfProduct(notification.categoryType)">{{notification.description}}</a>
+      </div>
+      <hr>
+    </div>
+  </div>
+</div>

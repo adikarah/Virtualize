@@ -1,0 +1,46 @@
+<div class="notification-set" *ngIf="typeOfUser != 2">
+  <!--notification container-->
+  <div class="dropdown">
+    <!--notification visible button on nav bar-->
+    <button class="dropbtn">
+      <img src="../../assets/images/bell.jpg">
+    </button>
+
+    <!--notification context-->
+    <div class="dropdown-content">
+
+      <div class="notificationTitle">
+        <p><strong>Notification</strong></p>
+      </div>
+
+      <!--when no one is login then empty notification bar-->
+      <div *ngIf="typeOfUser == 0; else elsePartOfNotification">
+        <div class="notificationContent">
+          <p id="notificationContentEmpty">Current you don't have any notification</p>
+        </div>
+      </div>
+
+      <ng-template #elsePartOfNotification>
+        <div class="notificationContentBar">
+          <div
+            *ngFor="let notification of getAllNotification() | slice: notificationDataLength-5:notificationDataLength">
+            <hr>
+            <div class="notificationContent">
+              <img src="{{recommedationImage}}{{notification.recommendId}}">
+              <a [routerLink]="'/user-container/'+ notification.categoryType"
+                (click)="onTypeOfProduct(notification.categoryType)">{{notification.description}}</a>
+            </div>
+          </div>
+        </div>
+        <hr>
+      </ng-template>
+
+      <!--link to go notification page-->
+      <div class="viewAllNotification" *ngIf="typeOfUser == 1">
+        <a [routerLink]="'/notification-page'">
+          View all notification
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

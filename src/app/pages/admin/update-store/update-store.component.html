@@ -1,0 +1,38 @@
+<mat-card>
+  <h2>UPDATE STORE > {{selectedShopName}} </h2>
+  <mat-card-content>
+    <div class="bootstrap-wrapper">
+      <div class="row">
+        <div class="col-md-8 offset-md-3">
+          <form (ngSubmit)="formSubmit()">
+            <mat-form-field class="width100" appearance="outline">
+              <mat-label>Store Name</mat-label>
+              <input type="text" name="title" matInput [(ngModel)]="updShop.shopName" placeholder="Enter Here">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Location</mat-label>
+              <input type="text" name="Location" matInput [(ngModel)]="updShop.shopLocation"
+                placeholder="Enter Location">
+            </mat-form-field>
+            <mat-form-field class="width100" appearance="outline">
+              <mat-label>Description</mat-label>
+              <textarea name="description" matInput rows="14" placeholder="Enter Store Description"></textarea>
+
+            </mat-form-field>
+            <div class="container text-center" style="margin-top: 2%;">
+              <button type="submit" mat-raised-button
+                style="background-color: #2a4977; color: ghostwhite;">UPDATE</button>
+              <button type="reset" style="margin-left: 2% ;" mat-raised-button color="warn">RESET</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<div *ngIf="change">
+  <mat-progress-bar mode="indeterminate">
+  </mat-progress-bar>
+</div>

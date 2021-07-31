@@ -1,0 +1,22 @@
+<div *ngIf="change" class="loader-container" style="margin-bottom: 20%;">
+  <mat-spinner style="top: 40%; left: 45%;"></mat-spinner>
+</div>
+
+<mat-card>
+  <h2>ALL OFFERS > {{selectedShopName}} > {{selectedProductName}}</h2>
+  <div class="text-right">
+    <button routerLink="/admin/add-discount" mat-raised-button style="background-color: #2a4977; color: ghostwhite;">Add
+      New Offer</button>
+  </div>
+  <mat-list>
+    <mat-list-item *ngFor="let d of productDiscounts">
+      <h3 style="color: rgb(177, 106, 106);" mat-line>{{d.discountName}}</h3>
+      <p mat-line>{{d.discountPercentage}} % off</p>
+      <mat-icon mat-list-icon>local_offer</mat-icon>
+      <button (click)="onDeleteDiscount(d)" mat-flat-button color="warn" style="margin-right: 2%;">Delete</button>
+      <p mat-line style="color: rgb(52, 111, 179);">This is Description of Shop</p>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+
+</mat-card>

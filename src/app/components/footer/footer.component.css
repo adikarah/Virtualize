@@ -1,0 +1,70 @@
+.footerClass {
+  margin-top: 10%;
+}
+
+.footers a {
+  color: white;
+}
+
+.footers p {
+  color: white;
+}
+
+.footers ul {
+  line-height: 30px;
+}
+
+.social-icons a {
+  margin-right: 1%;
+  padding: 1%;
+}
+
+#social-fb:hover {
+  color: #3B5998;
+  -webkit-transition: all .001s;
+  transition: all .001s;
+}
+
+#social-tw:hover {
+  color: #4099FF;
+  -webkit-transition: all .001s;
+  transition: all .001s;
+}
+
+#social-gp:hover {
+  color: #d34836;
+  -webkit-transition: all .001s;
+  transition: all .001s;
+}
+
+#social-em:hover {
+  color: #f39c12;
+  -webkit-transition: all .001s;
+  transition: all .001s;
+}
+
+section #first-footer {
+  background-color: #192537;
+}
+
+section #first-footer h5 {
+  font-weight: bolder;
+}
+
+section #second-footer {
+  background-color: #192537;
+  font-weight: bolder;
+  color: dimgrey;
+}
+
+section #third-footer {
+  background-color: black;
+  font-weight: bolder;
+}
+
+.pt-5,
+.py-5 {
+  padding-top: 1rem !important;
+  padding-bottom: 0rem !important;
+}
+/*# sourceMappingURL=footer.component.css.map */

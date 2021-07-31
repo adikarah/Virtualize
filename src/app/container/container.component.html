@@ -1,0 +1,6 @@
+<section>
+  <app-userdashboard-category class="category" (productEmitter)="getProductData($event)"></app-userdashboard-category>
+  <div class="dashboard">
+    <app-dashboard [productData]="productData"></app-dashboard>
+  </div>
+</section>

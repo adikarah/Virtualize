@@ -1,0 +1,28 @@
+.example-spacer {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
+h1 {
+  margin: 0%;
+}
+
+.form-control {
+  height: 2vw;
+}
+
+.btn {
+  height: 2.5vw;
+}
+
+.navbar {
+  padding: 0px 16px 0px 0px;
+  height: 60px;
+}
+
+.navbar img {
+  width: 180px;
+  height: 100%;
+}
+/*# sourceMappingURL=navbar.component.css.map */
